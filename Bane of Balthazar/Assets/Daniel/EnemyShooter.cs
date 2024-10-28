@@ -27,18 +27,6 @@ public class EnemyShooter : MonoBehaviour
         enemyReferences = GetComponent<EnemyReferences>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private Vector3 GetDirection()
     {
         Vector3 direction = transform.forward;
