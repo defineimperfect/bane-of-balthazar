@@ -22,6 +22,8 @@ public class EnemyShooter : MonoBehaviour
 
     private EnemyReferences enemyReferences;
 
+    [SerializeField] float damage;
+
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
@@ -57,11 +59,12 @@ public class EnemyShooter : MonoBehaviour
         Destroy(trail.gameObject, trail.time);
     }
 
-    public void Shoot()
+    public void Attack()
     {
         Vector3 direction = GetDirection();
         if(Physics.Raycast(shootingPoint.position, direction, out RaycastHit hit, float.MaxValue, layerMask))
         {
+            // Damage player...
             Debug.DrawLine(shootingPoint.position, shootingPoint.position + direction * 10f, Color.red, 1f);
         }
     }
