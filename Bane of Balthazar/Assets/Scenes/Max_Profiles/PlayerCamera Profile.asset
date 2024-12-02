@@ -354,13 +354,13 @@ MonoBehaviour:
     value: 4
   FixedVerticalResolution:
     overrideState: 1
-    value: 480
+    value: 329
   ColorDepth:
     overrideState: 1
     value: 0.234
   DitherPattern:
     overrideState: 1
-    value: {fileID: 0}
+    value: {fileID: 2800000, guid: 33e4517dca3a2274ba1532dd85e3c541, type: 3}
     defaultState: 0
   DitherPatternScale:
     overrideState: 1
@@ -370,7 +370,7 @@ MonoBehaviour:
     value: 0.75
   DitherIntensity:
     overrideState: 1
-    value: 0.141
+    value: 0.075
 --- !u!114 &5737788397794002828
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1694,7 +1694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1

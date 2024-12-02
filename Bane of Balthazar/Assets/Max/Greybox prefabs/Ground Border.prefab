@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground Plane (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6720941624388881264, guid: 80f2a700f5749c744bed87db21589169, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
     - target: {fileID: 9069711311283920659, guid: 80f2a700f5749c744bed87db21589169, type: 3}
       propertyPath: m_VersionIndex
       value: 2314
@@ -157,6 +161,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground Plane (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 6720941624388881264, guid: 80f2a700f5749c744bed87db21589169, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
     - target: {fileID: 9069711311283920659, guid: 80f2a700f5749c744bed87db21589169, type: 3}
       propertyPath: m_VersionIndex
       value: 3644
@@ -3631,6 +3639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground Plane (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6720941624388881264, guid: 80f2a700f5749c744bed87db21589169, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
     - target: {fileID: 9069711311283920659, guid: 80f2a700f5749c744bed87db21589169, type: 3}
       propertyPath: m_VersionIndex
       value: 3647
@@ -7105,6 +7117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground Plane (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6720941624388881264, guid: 80f2a700f5749c744bed87db21589169, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
     - target: {fileID: 9069711311283920659, guid: 80f2a700f5749c744bed87db21589169, type: 3}
       propertyPath: m_VersionIndex
       value: 2314

@@ -37,7 +37,7 @@ MonoBehaviour:
     value: 1
   DitherThreshold:
     overrideState: 1
-    value: 0.1
+    value: 0.122
   DitherIntensity:
     overrideState: 1
     value: 0.1
