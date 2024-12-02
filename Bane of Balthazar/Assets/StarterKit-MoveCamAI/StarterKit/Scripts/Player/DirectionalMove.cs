@@ -4,7 +4,7 @@ using System.Collections;
 public class DirectionalMove : MonoBehaviour {
 
 	// Animation script
-	private CharacterAnimation anim;
+	private PlayerAnimation anim;
 
 	// Speed variables
 	private float speed = 10f;
@@ -13,7 +13,7 @@ public class DirectionalMove : MonoBehaviour {
 
 	void Start()
 	{
-		anim = GetComponent<CharacterAnimation>(); // Get the animation script
+		anim = GetComponent<PlayerAnimation>(); // Get the animation script
 	}
 
 	// FixedUpdate is used for physics based movement

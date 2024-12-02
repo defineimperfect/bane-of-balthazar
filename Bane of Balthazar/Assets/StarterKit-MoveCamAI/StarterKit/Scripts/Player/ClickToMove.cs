@@ -4,7 +4,7 @@ using System.Collections;
 public class ClickToMove : MonoBehaviour
 {
 	// Animation Script
-	private CharacterAnimation anim;
+	private PlayerAnimation anim;
 	
 	// Movement variables
 	private Vector3 destinationPosition;
@@ -15,7 +15,7 @@ public class ClickToMove : MonoBehaviour
 	
 	void Start()
 	{
-		anim = GetComponent<CharacterAnimation>(); // Get the animation script
+		anim = GetComponent<PlayerAnimation>(); // Get the animation script
 	}
 	
 	void OnEnable()

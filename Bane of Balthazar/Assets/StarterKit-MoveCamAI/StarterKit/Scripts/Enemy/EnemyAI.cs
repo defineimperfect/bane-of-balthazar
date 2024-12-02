@@ -10,7 +10,7 @@ using System.Collections;
 public class EnemyAI : MonoBehaviour {
 
 	private Transform player;
-	private CharacterAnimation anim;
+	private PlayerAnimation anim;
 	private RaycastHit hitPlayer, left, right, forLeft, forRight;
 	
 	public bool playerSpotted;
@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour {
 	void Start()
 	{
 		player = GameObject.Find("Player").transform; // Find the player GameObject
-		anim = GetComponent<CharacterAnimation>(); // Get the animation script
+		anim = GetComponent<PlayerAnimation>(); // Get the animation script
 	}
 	
 	// FixedUpdate is used for physics based movement

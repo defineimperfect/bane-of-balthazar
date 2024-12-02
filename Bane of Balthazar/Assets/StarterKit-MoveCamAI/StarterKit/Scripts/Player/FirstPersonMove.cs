@@ -4,7 +4,7 @@ using System.Collections;
 public class FirstPersonMove : MonoBehaviour {
 
 	// Animation script
-	private CharacterAnimation anim;
+	private PlayerAnimation anim;
 	
 	// Rotation variables
 	private float   rotY,
@@ -21,7 +21,7 @@ public class FirstPersonMove : MonoBehaviour {
 	
 	void Start()
 	{
-		anim = GetComponent<CharacterAnimation>(); // Get the animation script
+		anim = GetComponent<PlayerAnimation>(); // Get the animation script
 	}
 	
 	// FixedUpdate is used for physics based movement

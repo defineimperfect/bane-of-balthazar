@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterAnimation : MonoBehaviour {
+public class PlayerAnimation : MonoBehaviour {
 
 	// Public boolean for running animation
 	public bool _animRun;
