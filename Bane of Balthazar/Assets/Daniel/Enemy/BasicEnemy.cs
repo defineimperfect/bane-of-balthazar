@@ -13,7 +13,7 @@ namespace EnemyBase
 
         private float pathUpdateDeadline;
 
-        private float shootingDistance;
+        private float attackingDistance;
 
         private void Awake()
         {
@@ -22,14 +22,14 @@ namespace EnemyBase
        
         void Start()
         {
-            shootingDistance = enemyReferences.navMeshAgent.stoppingDistance;
+            attackingDistance = enemyReferences.navMeshAgent.stoppingDistance;
         }
 
         void Update()
         {
             if(target != null)
             {
-                bool inRange = Vector3.Distance(transform.position, target.position) <= shootingDistance;
+                bool inRange = Vector3.Distance(transform.position, target.position) <= attackingDistance;
 
                 if(inRange)
                 {
@@ -39,8 +39,12 @@ namespace EnemyBase
                 {
                     UpdatePath();
                 }
+            
+            enemyReferences.animator.SetBool("attacking", inRange);
             }
+            enemyReferences.animator.SetFloat("speed", enemyReferences.navMeshAgent.desiredVelocity.sqrMagnitude);
         }
+
         private void LookAtTarget()
         {
             Vector3 lookPos = target.position - transform.position;
