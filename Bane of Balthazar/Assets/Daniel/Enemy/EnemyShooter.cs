@@ -20,13 +20,18 @@ public class EnemyShooter : MonoBehaviour
 
     public TrailRenderer bulletTrail;
 
+    public int ammo = 15;
+
     private EnemyReferences enemyReferences;
+
+    private int currentAmmo; 
 
     [SerializeField] float damage;
 
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
+        Reload();
     }
 
     private Vector3 GetDirection()
@@ -61,11 +66,28 @@ public class EnemyShooter : MonoBehaviour
 
     public void Attack()
     {
+        if(ShouldReload())
+        {
+            return;
+        }
         Vector3 direction = GetDirection();
         if(Physics.Raycast(shootingPoint.position, direction, out RaycastHit hit, float.MaxValue, layerMask))
         {
             // Damage player...
             Debug.DrawLine(shootingPoint.position, shootingPoint.position + direction * 10f, Color.red, 1f);
+
+            currentAmmo -= 1;
         }
+    }
+
+    public bool ShouldReload()
+    {
+        return currentAmmo <= 0;
+    }
+
+    public void Reload()
+    {
+        Debug.Log("Reload");
+        currentAmmo = ammo;
     }
 }
