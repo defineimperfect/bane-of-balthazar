@@ -30,7 +30,7 @@ MonoBehaviour:
     value: 0.075
   DitherPattern:
     overrideState: 1
-    value: {fileID: 2800000, guid: be72dee3d0af07340abb0bba594a9998, type: 3}
+    value: {fileID: 2800000, guid: c9796c509b18e974cba8dd5a24ddc443, type: 3}
     defaultState: 0
   DitherPatternScale:
     overrideState: 1
