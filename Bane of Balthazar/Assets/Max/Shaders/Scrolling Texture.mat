@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Rotation: 90
+    - _Rotation: 98
     - _Scale: 50
     m_Colors:
     - _Direction: {r: 0, g: 0.06, b: 0, a: 0}
