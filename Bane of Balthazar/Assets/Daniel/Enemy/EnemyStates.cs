@@ -18,14 +18,18 @@ public class EnemyStates : MonoBehaviour
 
         FindCovers findCovers = FindObjectOfType<FindCovers>();
 
+        // States 
         var runToCover = new State_RunToCover(enemyReferences, findCovers);
 
         var delayAfterRun = new State_Delay(2f);
 
         var cover = new State_Cover(enemyReferences);
 
-        // var state
+        // Transitions
+        At(runToCover, delayAfterRun, () => runToCover.HasArrivedAtDestination());
+        At(delayAfterRun, cover, () => delayAfterRun.IsDone());
 
+        // Functions and Conditions
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
         void Any(IState to, Func<bool> condition) => stateMachine.AddAnyTransition(to, condition);
     }

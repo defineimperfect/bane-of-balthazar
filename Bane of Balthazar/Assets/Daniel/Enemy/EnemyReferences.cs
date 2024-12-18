@@ -10,6 +10,9 @@ namespace EnemyBase
     {
         [HideInInspector] public NavMeshAgent navMeshAgent;
         [HideInInspector] public Animator animator;
+        [HideInInspector] public EnemyShooter shooter;
+        [HideInInspector] public EnemyMelee melee;
+
 
         [Header("Stats")]
 
@@ -19,6 +22,8 @@ namespace EnemyBase
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
+            shooter = GetComponent<EnemyShooter>();
+            melee = GetComponent<EnemyMelee>();
         }
     }
 }
