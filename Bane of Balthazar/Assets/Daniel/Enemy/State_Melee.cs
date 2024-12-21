@@ -1,29 +1,28 @@
-using EnemyBase;
 using System.Collections;
 using System.Collections.Generic;
+using EnemyBase;
 using UnityEngine;
 
-public class State_ChasePlayer : IState
+public class State_Attack : IState
 {
     private EnemyReferences enemyReferences;
     private Transform target;
-    private float pathUpdateDeadline;
 
-    public State_ChasePlayer(EnemyReferences enemyReferences)
+    public State_Attack(EnemyReferences enemyReferences)
     {
         this.enemyReferences = enemyReferences;
     }
 
     public void OnEnter()
     {
-        Debug.Log("Start chasing");
+        Debug.Log("Start attacking");
         target = GameObject.FindWithTag("Player").transform;
     }
 
     public void OnExit()
     {
-        Debug.Log("Stop chasing");
-        enemyReferences.animator.SetBool("chasing", false);
+        Debug.Log("Stop attacking");
+        enemyReferences.animator.SetBool("attacking", false);
         target = null;
     }
 
@@ -36,24 +35,12 @@ public class State_ChasePlayer : IState
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             enemyReferences.transform.rotation = Quaternion.Slerp(enemyReferences.transform.rotation, rotation, 0.2f);
 
-            enemyReferences.animator.SetBool("chasing", true);
-
-            if (Time.time >= pathUpdateDeadline)
-            {
-                Debug.Log("Updating Path!");
-                pathUpdateDeadline = Time.time + enemyReferences.pathUpdateDelay;
-                enemyReferences.navMeshAgent.SetDestination(target.position);
-            }
+            enemyReferences.animator.SetBool("attacking", true);
         }
-    }
-
-    public bool HasArrivedAtDestination()
-    {
-        return enemyReferences.navMeshAgent.remainingDistance < 0.1f;
     }
 
     public Color GizmoColor()
     {
-        return Color.grey;
+        return Color.cyan;
     }
 }

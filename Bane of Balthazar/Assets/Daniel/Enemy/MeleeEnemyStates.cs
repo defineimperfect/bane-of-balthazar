@@ -1,10 +1,10 @@
-using EnemyBase;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EnemyBase;
 using UnityEngine;
 
-public class EnemyStates : MonoBehaviour
+public class MeleeEnemyStates : MonoBehaviour
 {
     private EnemyReferences enemyReferences;
     private StateMachine stateMachine;
@@ -16,18 +16,19 @@ public class EnemyStates : MonoBehaviour
 
         stateMachine = new StateMachine();
 
-        FindCovers findCovers = FindObjectOfType<FindCovers>();
-
         // States 
-        var runToCover = new State_RunToCover(enemyReferences, findCovers);
+        var chasePlayer = new State_ChasePlayer(enemyReferences);
+
+        var attack = new State_Attack(enemyReferences);
 
         var delayAfterRun = new State_Delay(2f);
 
-        var cover = new State_Cover(enemyReferences);
+       
 
-        // Transitions
-        At(runToCover, delayAfterRun, () => runToCover.HasArrivedAtDestination());
-        At(delayAfterRun, cover, () => delayAfterRun.IsDone());
+       // Transitions
+        At(chasePlayer, delayAfterRun,() => chasePlayer.HasArrivedAtDestination());
+        At(delayAfterRun, attack, () => delayAfterRun.IsDone());
+       
 
         // Functions and Conditions
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
@@ -40,3 +41,4 @@ public class EnemyStates : MonoBehaviour
         stateMachine.Tick();
     }
 }
+

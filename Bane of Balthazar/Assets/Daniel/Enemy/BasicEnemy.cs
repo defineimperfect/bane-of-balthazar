@@ -7,6 +7,8 @@ namespace EnemyBase
 {
     public class BasicEnemy : MonoBehaviour
     {
+        [Header("Enemy")]
+
         public Transform target;
 
         private EnemyReferences enemyReferences;

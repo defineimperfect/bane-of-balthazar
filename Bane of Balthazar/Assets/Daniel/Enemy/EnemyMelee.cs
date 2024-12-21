@@ -18,6 +18,7 @@ public class EnemyMelee : MonoBehaviour
 
     [SerializeField] float damage;
 
+
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
@@ -30,7 +31,7 @@ public class EnemyMelee : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out RaycastHit hit, attackRange, layerMask))
         {
-            // Damage player...
+            // Damage player... 
             Debug.DrawLine(origin, direction  * attackRange, Color.red, 1f);
         }
     }
