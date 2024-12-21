@@ -36875,6 +36875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4x4 floor
       objectReference: {fileID: 0}
+    - target: {fileID: 2644442315075930696, guid: c24497e0f5e930b4fb2331041ff62096, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3728c8ce46184e34e9e6bdb57b8f17c1, type: 2}
     - target: {fileID: 7273811808886332909, guid: c24497e0f5e930b4fb2331041ff62096, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -36887,6 +36891,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 874416483}
+    - target: {fileID: 7328853949527525794, guid: c24497e0f5e930b4fb2331041ff62096, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
