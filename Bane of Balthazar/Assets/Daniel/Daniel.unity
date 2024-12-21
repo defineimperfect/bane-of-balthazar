@@ -998,8 +998,8 @@ GameObject:
   - component: {fileID: 960124630}
   - component: {fileID: 960124638}
   - component: {fileID: 960124639}
-  - component: {fileID: 960124641}
   - component: {fileID: 960124640}
+  - component: {fileID: 960124641}
   m_Layer: 0
   m_Name: Liten arg man
   m_TagString: Untagged
@@ -1179,9 +1179,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 960124628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e74a1efd28142640ab471a20cc64e60, type: 3}
+  m_Script: {fileID: 11500000, guid: ce5db0a7a84f3b2429ef6425fa32c675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 1903388999}
 --- !u!1 &1277121095
 GameObject:
   m_ObjectHideFlags: 0
