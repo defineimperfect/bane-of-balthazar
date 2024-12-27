@@ -4,6 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// STATES FOR IF ENEMY HAS MOBILITY.
+// THESE STATES ARE USED IN ORDER TO MAKE THE ENEMY HIDE BEHIND COVER BEFORE SHOOTING.
+
 public class RangedEnemyStates : MonoBehaviour
 {
     private EnemyReferences enemyReferences;

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using EnemyBase;
 using UnityEngine;
 
+
+// STATES FOR IF ENEMY IS A CLOSE-RANGE ATTACKER.
+
 public class MeleeEnemyStates : MonoBehaviour
 {
     private EnemyReferences enemyReferences;
