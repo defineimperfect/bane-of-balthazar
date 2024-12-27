@@ -47,7 +47,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Melee Enemy
+  m_Name: Close-ranged Enemy
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: speed
