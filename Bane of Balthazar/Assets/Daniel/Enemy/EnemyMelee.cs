@@ -27,8 +27,10 @@ public class EnemyMelee : MonoBehaviour
         enemyReferences = GetComponent<EnemyReferences>();
     }
 
+
     public void Attack()
     {
+        Debug.Log(" ATK Test 1 24e35");
         Vector3 origin = transform.position; // Enemy's position
         Vector3 direction = transform.forward; // Enemy's forward direction
 
