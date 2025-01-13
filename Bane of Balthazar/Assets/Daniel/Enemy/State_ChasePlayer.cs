@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State_ChasePlayer : MonoBehaviour
+public class State_ChasePlayer : IState
 {
     private EnemyReferences enemyReferences;
     private Transform target;
@@ -46,6 +46,12 @@ public class State_ChasePlayer : MonoBehaviour
             }
         }
     }
+
+    public bool HasArrivedAtDestination()
+    {
+        return enemyReferences.navMeshAgent.remainingDistance < 0.1f;
+    }
+
     public Color GizmoColor()
     {
         return Color.grey;

@@ -44,7 +44,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Rotation: 98
-    - _Scale: 50
+    - _Scale: 117.9
     m_Colors:
     - _Direction: {r: 0, g: 0.06, b: 0, a: 0}
   m_BuildTextureStacks: []

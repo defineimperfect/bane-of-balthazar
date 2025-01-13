@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// DESIGNATED SCRIPT FOR CLOSE-RANGED ENEMY!
+// NOTE: MAY ADD COLLISION HITBOX IF NEEDED!
+
 public class EnemyMelee : MonoBehaviour
 {
 
@@ -14,9 +17,10 @@ public class EnemyMelee : MonoBehaviour
 
     private EnemyReferences enemyReferences;
 
-    [SerializeField] float attackRange = 2.0f;
+    [SerializeField] float attackRange = 2.0f; // ADJUST RANGE ACCORDINGLY! 
 
-    [SerializeField] float damage;
+    [SerializeField] float damage; // ADJUST DAMAGE ACCORDINGLY!
+
 
     private void Awake()
     {
@@ -28,9 +32,10 @@ public class EnemyMelee : MonoBehaviour
         Vector3 origin = transform.position; // Enemy's position
         Vector3 direction = transform.forward; // Enemy's forward direction
 
+
         if (Physics.Raycast(origin, direction, out RaycastHit hit, attackRange, layerMask))
         {
-            // Damage player...
+            // Damage player... 
             Debug.DrawLine(origin, direction  * attackRange, Color.red, 1f);
         }
     }

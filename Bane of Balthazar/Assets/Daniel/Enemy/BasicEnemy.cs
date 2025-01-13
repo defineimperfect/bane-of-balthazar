@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// BASIC ENEMY SCRIPT, ALLOWS ENEMY TO LOOK AT PLAYER DIRECTION AND BEGINS ATTACK ANIMATION.
+// FOR ATTACK SCRIPTS, SEE "EnemyMelee" OR "EnemyShooter" 
+// APPLY SCRIPTS TO ENEMY ALONG WITH MENTIONED ATTACK SCRIPTS.
+// IF A MORE ADVANCED ENEMY IS DESIRED, MAKE USE OF EITHER "MeleeEnemyStates" OR "RangedEnemyStates" DEPENDING ON ENEMY TYPE.
+
 namespace EnemyBase
 {
     public class BasicEnemy : MonoBehaviour
     {
+        [Header("Enemy")]
+
         public Transform target;
 
         private EnemyReferences enemyReferences;
@@ -22,27 +29,27 @@ namespace EnemyBase
        
         void Start()
         {
-            attackingDistance = enemyReferences.navMeshAgent.stoppingDistance;
+            attackingDistance = enemyReferences.navMeshAgent.stoppingDistance; // Attacking distance is the same as navMesh agent's stopping distance!
         }
 
         void Update()
         {
             if(target != null)
             {
-                bool inRange = Vector3.Distance(transform.position, target.position) <= attackingDistance;
+                bool inRange = Vector3.Distance(transform.position, target.position) <= attackingDistance; // Player is in range if distance between player and enemy is less or equal to the enemy's attacking distance!
 
                 if(inRange)
                 {
-                    LookAtTarget();
+                    LookAtTarget(); // If in range, call method "LookAtTarget()"
                 }
                 else
                 {
-                    UpdatePath();
+                    UpdatePath(); // If not in range, update path via method "UpdatePath()"
                 }
             
-            enemyReferences.animator.SetBool("attacking", inRange);
+            enemyReferences.animator.SetBool("attacking", inRange); // Trigger bool parameter, "attacking" in animator.
             }
-            enemyReferences.animator.SetFloat("speed", enemyReferences.navMeshAgent.desiredVelocity.sqrMagnitude);
+            enemyReferences.animator.SetFloat("speed", enemyReferences.navMeshAgent.desiredVelocity.sqrMagnitude); 
         }
 
         private void LookAtTarget()

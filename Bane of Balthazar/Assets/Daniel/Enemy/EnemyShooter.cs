@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// DESIGNATED SCRIPT FOR RANGED ENEMY!
+
 public class EnemyShooter : MonoBehaviour
 {
 
