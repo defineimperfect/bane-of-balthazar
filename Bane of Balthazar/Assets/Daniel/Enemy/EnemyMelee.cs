@@ -11,6 +11,8 @@ public class EnemyMelee : MonoBehaviour
 
     [Header("General")]
 
+    public Transform weapon;
+
     public LayerMask layerMask;
 
     [Header("Weapon")]
@@ -35,10 +37,10 @@ public class EnemyMelee : MonoBehaviour
         Vector3 direction = transform.forward; // Enemy's forward direction
 
 
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, attackRange, layerMask))
+        if (Physics.Raycast(weapon.position, direction, out RaycastHit hit, attackRange, layerMask))
         {
             // Damage player... 
-            Debug.DrawLine(origin, direction  * attackRange, Color.red, 1f);
+            Debug.DrawLine(weapon.position, direction  * attackRange, Color.red, 1f);
         }
     }
 }
