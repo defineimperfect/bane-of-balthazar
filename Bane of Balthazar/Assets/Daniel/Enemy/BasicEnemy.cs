@@ -10,7 +10,7 @@ using UnityEngine.AI;
 
 namespace EnemyBase
 {
-    public class BasicEnemy : EnemyMelee
+    public class BasicEnemy : MonoBehaviour
     {
         [Header("Enemy")]
 
@@ -41,7 +41,6 @@ namespace EnemyBase
                 if(inRange)
                 {
                     LookAtTarget(); // If in range, call method "LookAtTarget()"
-                    Attack();
                 }
                 else
                 {
