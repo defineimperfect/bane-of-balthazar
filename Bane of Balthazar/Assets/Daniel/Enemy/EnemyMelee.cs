@@ -12,7 +12,7 @@ public class EnemyMelee : MonoBehaviour
 
     [Header("General")]
 
-    public Transform weapon;
+    //public Transform weapon;
 
     //public LayerMask layerMask;
 
