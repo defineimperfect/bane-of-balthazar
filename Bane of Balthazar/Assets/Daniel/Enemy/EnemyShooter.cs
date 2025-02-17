@@ -68,7 +68,11 @@ public class EnemyShooter : MonoBehaviour
 
     public void Attack()
     {
-        if(ShouldReload())
+        if(ShouldReload() == true)
+        {
+            Reload();
+        }
+        else
         {
             return;
         }
@@ -76,15 +80,23 @@ public class EnemyShooter : MonoBehaviour
         if(Physics.Raycast(shootingPoint.position, direction, out RaycastHit hit, float.MaxValue, layerMask))
         {
             // Damage player...
-            Debug.DrawLine(shootingPoint.position, shootingPoint.position + direction * 10f, Color.red, 1f);
+           // Debug.DrawLine(shootingPoint.position, shootingPoint.position + direction * 10f, Color.red, 1f);
 
             currentAmmo -= 1;
+            Debug.Log("Shooting!");
         }
     }
 
     public bool ShouldReload()
     {
-        return currentAmmo <= 0;
+        if(currentAmmo <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void Reload()
