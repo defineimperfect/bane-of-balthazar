@@ -645,6 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0063501439e2da54e992d1b61e8bbc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
 --- !u!95 &320257107
 Animator:
   serializedVersion: 5
@@ -1375,6 +1376,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1903388999}
+  range: {fileID: 0}
+  inRadius: 0
+  patrolPoints: []
+  targetPoint: 0
+  patrolSpeed: 0
 --- !u!95 &393963107
 Animator:
   serializedVersion: 5
@@ -1638,6 +1644,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &413903453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 413903454}
+  m_Layer: 0
+  m_Name: PatrolPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &413903454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413903453}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.7326796, y: 1.2671587, z: -2.188615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &587056277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,6 +2649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0063501439e2da54e992d1b61e8bbc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
 --- !u!114 &960124641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2625,6 +2663,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1903388999}
+  range: {fileID: 0}
+  inRadius: 0
+  patrolPoints: []
+  targetPoint: 0
+  patrolSpeed: 0
 --- !u!65 &960124642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2973,6 +3016,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1903388999}
+  range: {fileID: 0}
+  inRadius: 0
+  patrolPoints: []
+  targetPoint: 0
+  patrolSpeed: 0
 --- !u!95 &1037209137
 Animator:
   serializedVersion: 5
@@ -3429,6 +3477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0063501439e2da54e992d1b61e8bbc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
 --- !u!114 &1161623997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3459,6 +3508,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1903388999}
+  range: {fileID: 0}
+  inRadius: 0
+  patrolPoints: []
+  targetPoint: 0
+  patrolSpeed: 0
 --- !u!195 &1161623999
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5347,3 +5401,4 @@ SceneRoots:
   - {fileID: 839382759}
   - {fileID: 1717748032}
   - {fileID: 1309118173}
+  - {fileID: 413903454}

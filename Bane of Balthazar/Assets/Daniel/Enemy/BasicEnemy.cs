@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,15 +17,28 @@ namespace EnemyBase
 
         public Transform target;
 
+        public Transform range;
+
+        public bool inRadius;
+      
         private EnemyReferences enemyReferences;
 
         private float pathUpdateDeadline;
 
         private float attackingDistance;
 
+        [Header("Patrol!")]
+
+        public Transform[] patrolPoints;
+
+        public int targetPoint;
+
+        [SerializeField] public float patrolSpeed;
+        
         private void Awake()
         {
             enemyReferences = GetComponent<EnemyReferences>();
+            targetPoint = 0;
         }
        
         void Start()
@@ -34,20 +48,18 @@ namespace EnemyBase
 
         void Update()
         {
-            if(target != null)
+            if(target != inRadius)
             {
-                bool inRange = Vector3.Distance(transform.position, target.position) <= attackingDistance; // Player is in range if distance between player and enemy is less or equal to the enemy's attacking distance!
+                bool inAttackRange = Vector3.Distance(transform.position, target.position) <= attackingDistance; // Player is in range if distance between player and enemy is less or equal to the enemy's attacking distance!
+                Patrol();
 
-                if(inRange)
+                if(target == inRadius)
                 {
                     LookAtTarget(); // If in range, call method "LookAtTarget()"
-                }
-                else
-                {
-                    UpdatePath(); // If not in range, update path via method "UpdatePath()"
+                    UpdatePath(); // Follow player.  
                 }
             
-            enemyReferences.animator.SetBool("attacking", inRange); // Trigger bool parameter, "attacking" in animator.
+            enemyReferences.animator.SetBool("attacking", inAttackRange); // Trigger bool parameter, "attacking" in animator.
             }
             enemyReferences.animator.SetFloat("speed", enemyReferences.navMeshAgent.desiredVelocity.sqrMagnitude); 
         }
@@ -68,6 +80,23 @@ namespace EnemyBase
                 pathUpdateDeadline = Time.time + enemyReferences.pathUpdateDelay;
                 enemyReferences.navMeshAgent.SetDestination(target.position);
             }
+        }
+
+        private void Patrol()
+        {
+            if(target != inRadius)
+            {
+                if (transform.position == patrolPoints[targetPoint].position)
+                {
+                    PatrolNextPoint();
+                }
+                transform.position = Vector3.MoveTowards(transform.position, patrolPoints[targetPoint].position, patrolSpeed * Time.deltaTime);
+            }
+        }
+
+        private void PatrolNextPoint()
+        {
+            targetPoint++;
         }
     }
 }
