@@ -5,7 +5,7 @@ using UnityEngine;
 
 // DESIGNATED SCRIPT FOR RANGED ENEMY!
 
-public class EnemyShooter : MonoBehaviour
+public class SpreadEnemyShooter : MonoBehaviour
 {
 
     [Header("General")]

@@ -10,7 +10,7 @@ namespace EnemyBase
     {
         [HideInInspector] public NavMeshAgent navMeshAgent;
         [HideInInspector] public Animator animator;
-        [HideInInspector] public EnemyShooter shooter;
+        [HideInInspector] public SpreadEnemyShooter shooter;
         [HideInInspector] public EnemyMelee melee;
 
 
@@ -22,7 +22,7 @@ namespace EnemyBase
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
-            shooter = GetComponent<EnemyShooter>();
+            shooter = GetComponent<SpreadEnemyShooter>();
             melee = GetComponent<EnemyMelee>();
         }
     }
