@@ -1,36 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Health2 : MonoBehaviour
 {
-    private float Health;
-    public float MaxHealth = 100f;
+    public int MaxHealth = 100;
+    public int CurrentHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        Health = MaxHealth;
+        CurrentHealth = MaxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int amount)
     {
-        Health = Mathf.Clamp(Health, 0, MaxHealth);
-        UpdateHealthUI();
-        if (Input.GetKeyDown(KeyCode.B))
+        CurrentHealth -= amount;
+
+        if (CurrentHealth <= 0)
         {
-            TakeDamage(Random.Range(5, 10));
+            //Fucking dieeeeeedd
+            //Make animation or whatever and activate next line
+            //Animation.SetBool(IsDead, true);
         }
     }
-    public void UpdateHealthUI()
-    {
-        Debug.Log(Health);
-    }
 
-    public void TakeDamage(float Damage)
+    public  void Heal(int amount)
     {
-        Health -= Damage;
+        CurrentHealth += amount;
+
+        if (CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
     }
 }
