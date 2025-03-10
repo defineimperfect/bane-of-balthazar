@@ -13,14 +13,17 @@ public class EnemyMelee : MonoBehaviour
 
     [Header("General")]
 
+    private Health2 playerHealth;
+
     private EnemyReferences enemyReferences;
 
-    [SerializeField] float damage; // ADJUST DAMAGE ACCORDINGLY!
+    [SerializeField] int damage; // ADJUST DAMAGE ACCORDINGLY!
    
 
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
+        playerHealth = GetComponent<Health2>();
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -35,6 +38,7 @@ public class EnemyMelee : MonoBehaviour
     public void Attack()
     {
         // Damage player HERE!
-        Debug.Log("Hitting!");
+        playerHealth.TakeDamage(damage);
+        Debug.Log("Attacking!... Player currently has: " + playerHealth.CurrentHealth + " health left!");
     }
 }
