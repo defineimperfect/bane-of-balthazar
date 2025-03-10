@@ -10,19 +10,19 @@ namespace EnemyBase
     {
         [HideInInspector] public NavMeshAgent navMeshAgent;
         [HideInInspector] public Animator animator;
-        [HideInInspector] public SpreadEnemyShooter shooter;
+        [HideInInspector] public EnemyShooter shooter;
         [HideInInspector] public EnemyMelee melee;
 
 
         [Header("Stats")]
 
-        public float pathUpdateDelay = 0.2f;
+        public float pathUpdateDelay = 1f;
         
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
-            shooter = GetComponent<SpreadEnemyShooter>();
+            shooter = GetComponent<EnemyShooter>();
             melee = GetComponent<EnemyMelee>();
         }
     }
