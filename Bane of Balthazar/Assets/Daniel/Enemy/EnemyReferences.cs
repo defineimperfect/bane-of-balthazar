@@ -16,7 +16,7 @@ namespace EnemyBase
 
         [Header("Stats")]
 
-        public float pathUpdateDelay = 0.2f;
+        public float pathUpdateDelay = 1f;
         
         private void Awake()
         {
