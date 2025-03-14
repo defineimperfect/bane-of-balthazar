@@ -101,10 +101,10 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cloud_Contrast: 1.65
-    - _Cloud_Density: 2.54
+    - _Cloud_Contrast: 2.39
+    - _Cloud_Density: 1.6
     - _Cloud_Distortion_Size: 1
-    - _Cloud_Size: 232.52
+    - _Cloud_Size: 110.03
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -130,13 +130,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Alpha: {r: 1, g: 1, b: 1, a: 0}
+    - _Alpha: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Cloud_Distortion: {r: 1.99, g: 0, b: 0, a: 0}
+    - _Cloud_Distortion: {r: 1.36, g: 0, b: 0, a: 0}
     - _Cloud_Speed: {r: 0, g: 0.005, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_1: {r: 1, g: 1, b: 1, a: 0}
-    - _Color_2: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_2: {r: 1, g: 0.9575472, b: 0.9575472, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
