@@ -26,6 +26,7 @@ public class EnemyMelee : MonoBehaviour
         Debug.Log("Enemy damage output is: " + damage);
     }
 
+    /*
     public void OnCollisionEnter(Collision collision)
     {
        if(collision.gameObject.tag == "Player")
@@ -42,4 +43,5 @@ public class EnemyMelee : MonoBehaviour
 
         Task.Delay(1000);
     }
+    */
 }
