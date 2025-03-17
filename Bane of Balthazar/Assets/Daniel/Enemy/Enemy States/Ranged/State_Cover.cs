@@ -19,10 +19,11 @@ public class State_Cover : IState
         var enemyDelay = new State_Delay(1f);
         var enemyReload = new State_Reload(enemyReferences);
 
-        // Transitions
+        /* Transitions
         At(enemyShoot, enemyReload, () => enemyReferences.shooter.ShouldReload());
         At(enemyReload, enemyDelay, () => !enemyReferences.shooter.ShouldReload());
         At(enemyDelay, enemyShoot, () => enemyDelay.IsDone());
+        */
 
         // Staart
         stateMachine.SetState(enemyShoot);

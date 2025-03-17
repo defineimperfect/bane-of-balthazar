@@ -13,20 +13,19 @@ public class EnemyMelee : MonoBehaviour
 
     [Header("General")]
 
-    private Health2 playerHealth;
+    //  private Health2 playerHealth;
 
     private EnemyReferences enemyReferences;
 
-   [SerializeField] public int damage; // ADJUST DAMAGE ACCORDINGLY!
-   
+    //  [SerializeField] public int damage; // ADJUST DAMAGE ACCORDINGLY!
+
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
-        playerHealth = GetComponent<Health2>();
-        Debug.Log("Enemy damage output is: " + damage);
+        // playerHealth = GetComponent<Health2>();
     }
 
-    /*
+    /* ATTEMPTED DMG SCRIPT...
     public void OnCollisionEnter(Collision collision)
     {
        if(collision.gameObject.tag == "Player")
