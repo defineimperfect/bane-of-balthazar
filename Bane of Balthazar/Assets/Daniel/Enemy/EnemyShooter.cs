@@ -12,80 +12,57 @@ public class EnemyShooter : MonoBehaviour
 
     private EnemyReferences enemyReferences;
 
-    private Health2 playerHealth;
-
     public Transform shootingPoint; // Raycast start
 
-    public Transform gunPoint; // Visual trail start
+    public GameObject particleEffect;
 
-    public LayerMask layerMask; 
+    public GameObject hitParticle;
 
-    [Header("Gun")]
-
-    public TrailRenderer bulletTrail;
-
+    /*
     public int ammo = 15;
 
-    
-
     private int currentAmmo; 
-
-    [SerializeField] int damage;
+    */
 
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
-        playerHealth = GetComponent<Health2>();
-        Reload();
+
+      //  Reload();
     }
 
-    private Vector3 GetDirection()
+   
+
+    public void Shooting()
     {
-        Vector3 direction = transform.forward;
-        direction.Normalize();
-        return direction;
-    }
+        /* Reloading not necessary at the moment.
+         if(ShouldReload() == true)
+         {
+             Reload();
+         }
+         else
+         {
+             return;
+         }
+         */
+           
+        RaycastHit hit;
 
-    private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit) // Check: Object pooling.
-    {
-        float time = 0f;
-        Vector3 startPosition = trail.transform.position;
-
-        while(time < 1f)
+        if(Physics.Raycast(shootingPoint.position, transform.TransformDirection(Vector3.forward), out hit, 100))
         {
-            trail.transform.position = Vector3.Lerp(startPosition, hit.point, time);
-            time += Time.deltaTime / trail.time;
+            Debug.DrawRay(shootingPoint.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.magenta);
 
-            yield return null;
-        }
+            GameObject particle1 = Instantiate(particleEffect, shootingPoint.position, Quaternion.identity); // Creates bullet particle!!
 
-        trail.transform.position = hit.point;
+            GameObject particle2 = Instantiate(hitParticle, hit.point, Quaternion.identity); // Creates particles upon hit!
 
-        Destroy(trail.gameObject, trail.time);
-    }
+            Destroy(particle1, 1);
 
-    public void Attack()
-    {
-        if(ShouldReload() == true)
-        {
-            Reload();
-        }
-        else
-        {
-            return;
-        }
-        Vector3 direction = GetDirection();
-        if(Physics.Raycast(shootingPoint.position, direction, out RaycastHit hit, float.MaxValue, layerMask))
-        {
-            // Damage player...
-            playerHealth.TakeDamage(damage);
-           // Debug.DrawLine(shootingPoint.position, shootingPoint.position + direction * 10f, Color.red, 1f);
-
-            currentAmmo -= 1;
-            Debug.Log("Shooting!... Player currently has: " + playerHealth.CurrentHealth + " health left!");
+            Destroy(particle2, 1);
         }
     }
 
+    /* Reloading methods.
     public bool ShouldReload()
     {
         if(currentAmmo <= 0)
@@ -103,4 +80,5 @@ public class EnemyShooter : MonoBehaviour
         Debug.Log("Reload");
         currentAmmo = ammo;
     }
+    */
 }
