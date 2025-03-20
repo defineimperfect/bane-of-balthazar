@@ -6,55 +6,35 @@ using UnityEngine;
 // PURELY FOR TESTING. 
 public class Basicscript : MonoBehaviour
 {
+    public static Basicscript player;
 
-  //  private EnemyMelee enemyMelee;
-
-    public int playerHealth = 100;
+    [SerializeField] public int playerHealth;
 
     public int currentHealth;
 
-   // [SerializeField] public int enemyDamage; incase enemy dmg is adjustable.
+    private void Awake()
+    {
+        player = this; // Use player values regarding health!
+    }
 
     // Start is called before the first frame update
     void Start()
     {   
-        /* 
-        enemyMelee = GetComponent<EnemyMelee>();
-
-        enemyDamage = enemyMelee.damage;
-        */
 
         currentHealth = playerHealth;
+
     }
 
-    // FIND ANOTHER WAY
-    public void OnCollisionEnter(Collision collision)
+    public void TakeDamage(int damageTaken)
     {
-        if (collision.gameObject.tag == "Close-ranged Enemy")
+        if (currentHealth < 0)
         {
-            TakeDamage(5);
-
-            Debug.Log("Close-ranged attack! Player health: " + currentHealth);
-
-            Task.Delay(2000);
+            Debug.Log("Dead");
+            return;
         }
-        else if(collision.gameObject.tag == "EnemyProjectile")
+        else
         {
-            TakeDamage(10);
-
-            Debug.Log("Long-ranged attack! Player health: " + currentHealth);
-
-            Task.Delay(2000);
+            currentHealth -= damageTaken;
         }
     }
-
-
-    public int TakeDamage(int damageTaken)
-    {
-        currentHealth = currentHealth - damageTaken;
-
-        return currentHealth;
-    }
-    //
-
 }
