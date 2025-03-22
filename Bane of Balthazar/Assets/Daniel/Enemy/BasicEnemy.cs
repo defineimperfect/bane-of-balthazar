@@ -15,6 +15,8 @@ namespace EnemyBase
     {
         [Header("Enemy")]
 
+        public static BasicEnemy Enemy;
+
         public Transform target;
 
         public bool inRadius;
@@ -28,6 +30,7 @@ namespace EnemyBase
         private void Awake()
         {
             enemyReferences = GetComponent<EnemyReferences>();
+            Enemy = this;
         }
        
         void Start()
@@ -68,7 +71,7 @@ namespace EnemyBase
         {
             if(Time.time >= pathUpdateDeadline)
             {
-                Debug.Log("Updating Path!");
+               // Debug.Log("Updating Path!");
                 pathUpdateDeadline = Time.time + enemyReferences.pathUpdateDelay;
                 enemyReferences.navMeshAgent.SetDestination(target.position);
             }

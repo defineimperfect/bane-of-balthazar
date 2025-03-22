@@ -8,12 +8,14 @@ namespace EnemyBase
     [DisallowMultipleComponent]
     public class EnemyReferences : MonoBehaviour
     {
+        public static EnemyReferences enemy;
         [HideInInspector] public NavMeshAgent navMeshAgent;
         [HideInInspector] public Animator animator;
         [HideInInspector] public EnemyShooter shooter;
         [HideInInspector] public EnemyMelee melee;
 
-
+            
+       
         [Header("Stats")]
 
         public float pathUpdateDelay = 1f;
@@ -24,6 +26,7 @@ namespace EnemyBase
             animator = GetComponent<Animator>();
             shooter = GetComponent<EnemyShooter>();
             melee = GetComponent<EnemyMelee>();
+            enemy = this;
         }
     }
 }

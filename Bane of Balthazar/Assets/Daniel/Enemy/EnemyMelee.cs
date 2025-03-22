@@ -13,7 +13,7 @@ public class EnemyMelee : MonoBehaviour
 
     [Header("General")]
 
-    private Basicscript playerHealth;
+    private Health playerHealth;
 
     private EnemyReferences enemyReferences;
 
@@ -22,7 +22,7 @@ public class EnemyMelee : MonoBehaviour
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
-        playerHealth = GetComponent<Basicscript>();
+        playerHealth = GetComponent<Health>();
     }
 
     
@@ -37,9 +37,7 @@ public class EnemyMelee : MonoBehaviour
     public void Attack()
     {
         // Damage player HERE!
-        Basicscript.player.TakeDamage(damage);
-        Debug.Log("Attacking!... Player has taken: " + damage + " and has: " + Basicscript.player.currentHealth + " health left!");
-
-        Task.Delay(1000);
+        Health.player.TakeDamage(damage);
+        Debug.Log("Attacking!... Player has taken: " + damage + " and has: " + Health.player.CurrentHealth + " health left!");
     }
 }
