@@ -5,53 +5,54 @@ using UnityEngine;
 
 public class Projectiles : MonoBehaviour
 {
-   //bullet
-   public GameObject bullet;
+    //bullet
+    public GameObject bullet;
 
-   // bullet force
-   public float shootForce, upwardForce;
+    // bullet force
+    public float shootForce, upwardForce;
 
-   //Gun stats
-   public float timeBetweenShooting, spread, reloadTime, timeBetweenShots;
-   public int magazineSize, bulletsPerTap;
-   public bool allowButtonHold;
+    //Gun stats
+    public float timeBetweenShooting, spread, reloadTime, timeBetweenShots;
+    public int magazineSize, bulletsPerTap;
+    public bool allowButtonHold;
 
-   int bulletsLeft, bulletsShot;
+    int bulletsLeft, bulletsShot;
 
-   //bools 
-   bool shooting, readyToShoot, reloading;
+    //bools 
+    bool shooting, readyToShoot, reloading;
 
-   //Reference
-   public Camera fpsCam;
-   public Transform attackPoint;
+    //Reference
+    public Camera fpsCam;
+    public Transform attackPoint;
 
-   //bug fixing
-   public bool allowInvoke = true;
+    //bug fixing
+    public bool allowInvoke = true;
 
-   private void Awake()
-   {
-       //make sure magazine is full
-       bulletsLeft = magazineSize;
-       readyToShoot = true;
-   }
-       private void update()
-   {
-       Myinput();
-   }
-   private void Myinput()
-   {
-       //Check if allowed to hold down button and take corresponding input
-       if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-       else shooting = Input.GetKeyDown(KeyCode.Mouse0);
+    private void Awake()
+    {
+        //make sure magazine is full
+        bulletsLeft = magazineSize;
+        readyToShoot = true;
 
-       //shooting
-       if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
-       {
-           //Set bullets shot to 0
-           bulletsShot = 0;
+    }
+    private void update()
+    {
+        Myinput();
+    }
+    private void Myinput()
+    {
+        //Check if allowed to hold down button and take corresponding input
+        if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
+        else shooting = Input.GetKeyDown(KeyCode.Mouse0);
+
+        //shooting
+        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
+        {
+            //Set bullets shot to 0
+            bulletsShot = 0;
 
             Shoot();
-       }
+        }
     }
 
     private void Shoot()
@@ -90,12 +91,13 @@ public class Projectiles : MonoBehaviour
 
         bulletsLeft--;
         bulletsShot++;
-    }
 
-    //invoke resetShot function
-    If (allowInvoke)
-    {
-        Invoke("Resetshot", timeBetweenShooting);
-        allowInvoke = false;
+        //invoke resetShot function
+        if (allowInvoke)
+        {
+            Invoke("Resetshot", timeBetweenShooting);
+            allowInvoke = false;
+
+        }
     }
 }
