@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -25,6 +26,9 @@ public class Projectiles : MonoBehaviour
     public Camera fpsCam;
     public Transform attackPoint;
 
+    //Graphics
+    public TextMeshProUGUI ammunitionDisplay;
+
     //bug fixing
     public bool allowInvoke = true;
 
@@ -35,15 +39,24 @@ public class Projectiles : MonoBehaviour
         readyToShoot = true;
 
     }
-    private void update()
+    private void Update()
     {
         Myinput();
+
+        //Set ammo display, if it exists :D
+        if (ammunitionDisplay != null)
+            ammunitionDisplay.SetText(bulletsLeft / bulletsPerTap + " / " + magazineSize / bulletsPerTap);
     }
     private void Myinput()
     {
         //Check if allowed to hold down button and take corresponding input
         if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
         else shooting = Input.GetKeyDown(KeyCode.Mouse0);
+
+        //reloading
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
+        //Reload automatically when trying to shoot without ammo
+        if (readyToShoot && shooting && !reloading && bulletsLeft <= 0) Reload();
 
         //shooting
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
@@ -99,5 +112,27 @@ public class Projectiles : MonoBehaviour
             allowInvoke = false;
 
         }
+
+        //if more than one bulletsPerTap make sure to repeat shoot function
+        if (bulletsShot < bulletsPerTap && bulletsLeft > 0)
+            Invoke("shoot", timeBetweenShots);
+    }
+
+    private void ResetShot()
+    {
+        //Allow shooting and invoking again
+        readyToShoot = true;
+        allowInvoke = true;
+    }
+
+    private void Reload()
+    {
+        reloading = true;
+        Invoke("ReloadFinish", reloadTime);
+    }
+    private void ReloadFinished()
+    {
+        bulletsLeft = magazineSize;
+        reloading = false;
     }
 }
