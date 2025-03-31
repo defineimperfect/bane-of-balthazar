@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // DESIGNATED SCRIPT FOR RANGED ENEMY!
+// NOTE: WORKS TO AN EXTENT, WILL WORK LATER TO MAKE IT NOT DEAL DAMAGE WITH 100% ACCURACY.
 
 public class EnemyShooter : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class EnemyShooter : MonoBehaviour
 
     public Transform shootingPoint; // Raycast start
 
-    public GameObject particleEffect;
+ //   public GameObject particleEffect; // IF PROJECTILES ARE DESIRED.
 
     private Health playerHealth;
 
@@ -38,6 +39,7 @@ public class EnemyShooter : MonoBehaviour
     {
         Shooting();
     }
+
     public void Shooting()
     {
         /* Reloading not necessary at the moment.
@@ -53,17 +55,16 @@ public class EnemyShooter : MonoBehaviour
            
         RaycastHit hit;
 
-        if(Physics.Raycast(shootingPoint.position, transform.TransformDirection(Vector3.forward), out hit, 100))
+        if(Physics.Raycast(shootingPoint.position, transform.TransformDirection(Vector3.forward), out hit, 10))
         {
             Debug.DrawRay(shootingPoint.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.magenta);
 
-            GameObject particle1 = Instantiate(particleEffect, shootingPoint.position, Quaternion.identity); // Creates bullet particle!!
-
             Health.player.TakeDamage(damage);
 
-            Destroy(particle1, 1f);
+            Debug.Log("Shooting!... Player has taken: " + damage + " and has: " + Health.player.CurrentHealth + " health left!");
         }
     }
+}
 
     /* Reloading methods.
     public bool ShouldReload()
@@ -84,4 +85,3 @@ public class EnemyShooter : MonoBehaviour
         currentAmmo = ammo;
     }
     */
-}
