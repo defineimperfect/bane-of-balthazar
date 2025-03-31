@@ -1334,12 +1334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829d6f2412da0644c9c25cdbea3e5036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  range: 0
-  damage: 20
   shootingPoint: {fileID: 1567833931}
   particleEffect: {fileID: 3660470749608065447, guid: a8bab969f8880844d8d7fe13b7e67429, type: 3}
-  hitParticle: {fileID: 7681372876387942191, guid: e2aa0ca624c50fe47891456291065d1e, type: 3}
 --- !u!65 &393963105
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2844,12 +2840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829d6f2412da0644c9c25cdbea3e5036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  range: 0
-  damage: 0
   shootingPoint: {fileID: 1984440654}
   particleEffect: {fileID: 0}
-  hitParticle: {fileID: 0}
 --- !u!114 &977206101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3061,12 +3053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829d6f2412da0644c9c25cdbea3e5036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  range: 0
-  damage: 0
-  shootingPoint: {fileID: 0}
-  particleEffect: {fileID: 0}
-  hitParticle: {fileID: 0}
+  shootingPoint: {fileID: 1717748033}
+  particleEffect: {fileID: 3660470749608065447, guid: a8bab969f8880844d8d7fe13b7e67429, type: 3}
 --- !u!114 &1037209139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4564,6 +4552,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1037209136}
   m_SourcePrefab: {fileID: 100100000, guid: 390111b107c3553469a101262eac39a4, type: 3}
+--- !u!4 &1717748033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 390111b107c3553469a101262eac39a4, type: 3}
+  m_PrefabInstance: {fileID: 1717748032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1871223934
 GameObject:
   m_ObjectHideFlags: 0
@@ -4956,9 +4949,6 @@ MonoBehaviour:
   defaultHeight: 2
   crouchHeight: 1
   crouchSpeed: 3
-  staminaMax: 100
-  staminaDrainRate: 10
-  staminaRegenRate: 5
 --- !u!143 &1903389001
 CharacterController:
   m_ObjectHideFlags: 0
