@@ -1,6 +1,7 @@
 using EnemyBase;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 // DESIGNATED SCRIPT FOR RANGED ENEMY!
@@ -62,6 +63,8 @@ public class EnemyShooter : MonoBehaviour
             Health.player.TakeDamage(damage);
 
             Debug.Log("Shooting!... Player has taken: " + damage + " and has: " + Health.player.CurrentHealth + " health left!");
+
+            Task.Delay(1000);
         }
     }
 }
