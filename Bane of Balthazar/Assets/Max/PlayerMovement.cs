@@ -15,16 +15,22 @@ public class PlayerMovement : MonoBehaviour
     public float defaultHeight = 2f;
     public float crouchHeight = 1f;
     public float crouchSpeed = 3f;
+    public float staminaMax = 100f; // Maximum stamina
+    public float staminaDrainRate = 10f; // How fast stamina drains while running
+    public float staminaRegenRate = 5f; // How fast stamina regenerates when not running
 
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private CharacterController characterController;
 
     private bool canMove = true;
+    private float currentStamina;
+    private bool isRunning;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        currentStamina = staminaMax; // Set initial stamina
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -34,12 +40,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        // Handle running state
+        isRunning = Input.GetKey(KeyCode.LeftShift) && currentStamina > 0;
+
+        // Calculate movement speed
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
+        // Jumping
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpPower;
@@ -49,17 +59,18 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y = movementDirectionY;
         }
 
+        // Apply gravity
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.R) && canMove)
+        // Crouching
+        if (Input.GetKey(KeyCode.C) && canMove)
         {
             characterController.height = crouchHeight;
             walkSpeed = crouchSpeed;
             runSpeed = crouchSpeed;
-
         }
         else
         {
@@ -68,8 +79,33 @@ public class PlayerMovement : MonoBehaviour
             runSpeed = 12f;
         }
 
+        // Handle stamina depletion and regeneration
+        if (isRunning)
+        {
+            // Drain stamina while running
+            currentStamina -= staminaDrainRate * Time.deltaTime;
+            currentStamina = Mathf.Clamp(currentStamina, 0, staminaMax); // Ensure it doesn't go below 0
+        }
+        else
+        {
+            // Regenerate stamina when not running
+            if (currentStamina < staminaMax)
+            {
+                currentStamina += staminaRegenRate * Time.deltaTime;
+                currentStamina = Mathf.Clamp(currentStamina, 0, staminaMax); // Ensure it doesn't exceed max stamina
+            }
+        }
+
+        // Prevent running if stamina is depleted
+        if (currentStamina <= 0)
+        {
+            isRunning = false;
+        }
+
+        // Move the character
         characterController.Move(moveDirection * Time.deltaTime);
 
+        // Mouse look
         if (canMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;

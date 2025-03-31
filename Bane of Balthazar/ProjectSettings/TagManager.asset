@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - LastPosition
+  - Close-ranged Enemy
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
