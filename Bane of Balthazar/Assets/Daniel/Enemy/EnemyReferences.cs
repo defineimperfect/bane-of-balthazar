@@ -6,6 +6,8 @@ using UnityEngine.AI;
 namespace EnemyBase
 {
     [DisallowMultipleComponent]
+
+    // NOTE: WILL UNDERGO CHANGES
     public class EnemyReferences : MonoBehaviour
     {
         public static EnemyReferences enemy;

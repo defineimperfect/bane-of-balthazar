@@ -1,12 +1,10 @@
 using EnemyBase;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.ProBuilder.MeshOperations;
 
 // DESIGNATED SCRIPT FOR RANGED ENEMY!
+// NOTE: WORKS TO AN EXTENT, WILL WORK LATER TO MAKE IT NOT DEAL DAMAGE WITH 100% ACCURACY.
 
 public class EnemyShooter : MonoBehaviour
 {
@@ -15,24 +13,13 @@ public class EnemyShooter : MonoBehaviour
 
     private EnemyReferences enemyReferences;
 
-    private Health playerHealth;
-
-    [SerializeField] public float speed;
-
-    [SerializeField] public float range;
-
-    private float attackDistance;
-
-
-    [Header("Shooting")]
-
-    [SerializeField] public int damage;
-
     public Transform shootingPoint; // Raycast start
 
-    public GameObject particleEffect;
+ //   public GameObject particleEffect; // IF PROJECTILES ARE DESIRED.
 
-    public GameObject hitParticle;
+    private Health playerHealth;
+
+    [SerializeField] public int damage;
 
     /*
     public int ammo = 15;
@@ -43,31 +30,19 @@ public class EnemyShooter : MonoBehaviour
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
-        //  Reload();
+        playerHealth = GetComponent<Health>();
+      //  Reload();
+    }
+
+
+    private void Update()
+    {
+        Shooting();
     }
 
     public void Shooting()
     {
-        RaycastHit hit;
-
-        if(Physics.Raycast(shootingPoint.position, transform.TransformDirection(Vector3.forward), out hit, 100))
-        {
-            Debug.DrawRay(shootingPoint.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.magenta);
-
-            Health.player.TakeDamage(damage);
-
-            GameObject particle1 = Instantiate(particleEffect, shootingPoint.position, Quaternion.identity); // Creates bullet particle!!
-
-            GameObject particle2 = Instantiate(hitParticle, hit.point, Quaternion.identity); // Creates particles upon hit!
-
-            
-            Destroy(particle1, 1);
-
-            Destroy(particle2, 1);
-        }
-    }
-
-    /* Reloading methods.
+        /* Reloading not necessary at the moment.
          if(ShouldReload() == true)
          {
              Reload();
@@ -76,9 +51,24 @@ public class EnemyShooter : MonoBehaviour
          {
              return;
          }
+         */
+           
+        RaycastHit hit;
+
+        if(Physics.Raycast(shootingPoint.position, transform.TransformDirection(Vector3.forward), out hit, 10))
+        {
+            Debug.DrawRay(shootingPoint.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.magenta);
+
+            Health.player.TakeDamage(damage);
+
+            Debug.Log("Shooting!... Player has taken: " + damage + " and has: " + Health.player.CurrentHealth + " health left!");
+        }
+    }
+}
+
+    /* Reloading methods.
     public bool ShouldReload()
     {
-    
         if(currentAmmo <= 0)
         {
             return true;
@@ -95,4 +85,3 @@ public class EnemyShooter : MonoBehaviour
         currentAmmo = ammo;
     }
     */
-}
