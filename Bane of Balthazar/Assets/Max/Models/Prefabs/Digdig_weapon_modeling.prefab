@@ -223,7 +223,7 @@ PrefabInstance:
       addedObject: {fileID: 3913259435581586282}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d3028078ab98e7846b273507fb4051b4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 728013352275089646}
+      addedObject: {fileID: -1708693520714014702}
   m_SourcePrefab: {fileID: 100100000, guid: d3028078ab98e7846b273507fb4051b4, type: 3}
 --- !u!1 &7312917385204815538 stripped
 GameObject:
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smooth: 8
   swayMultiplier: 2
---- !u!114 &728013352275089646
+--- !u!114 &-1708693520714014702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7312917385204815538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f84ff3d36ef6747a5b3be3edc72f76, type: 3}
+  m_Script: {fileID: 11500000, guid: da73673e4683df646be792545c28ad80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 0}
@@ -266,11 +266,8 @@ MonoBehaviour:
   magazineSize: 100
   bulletsPerTap: 1
   allowButtonHold: 1
-  playerRb: {fileID: 0}
-  recoilForce: 2
   fpsCam: {fileID: 0}
-  attackPoint: {fileID: 7478008609705589370}
-  muzzleFlash: {fileID: 0}
+  attackPoint: {fileID: 0}
   ammunitionDisplay: {fileID: 0}
   allowInvoke: 1
 --- !u!4 &7941925531377273864 stripped

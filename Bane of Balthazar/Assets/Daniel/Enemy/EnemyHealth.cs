@@ -7,6 +7,8 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [HideInInspector] public float currentHealth;
+    
+    public static EnemyHealth selectedEnemy;
 
     [Header("Enemy Stats")]
     private EnemyReferences enemyReferences;
@@ -23,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
+        selectedEnemy = this;
     }
 
 
