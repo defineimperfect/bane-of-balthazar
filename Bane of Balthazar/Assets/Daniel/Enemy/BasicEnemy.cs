@@ -26,6 +26,8 @@ namespace EnemyBase
 
         private float pathUpdateDeadline;
 
+        private float delay = 3; 
+
         private float attackingDistance;
         
         private void Awake()
@@ -51,7 +53,8 @@ namespace EnemyBase
                 }
                 else
                 {
-                  UpdatePath(); // If not in range, update path via method "UpdatePath()"
+
+                    Invoke("UpdatePath", delay); // If not in range, update path via method "UpdatePath()"
                 }
             }
             

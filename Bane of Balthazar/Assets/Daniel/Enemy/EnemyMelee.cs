@@ -17,8 +17,9 @@ public class EnemyMelee : MonoBehaviour
 
     private EnemyReferences enemyReferences;
 
+    [Header("Enemy Stats")]
     [SerializeField] public int damage; // ADJUST DAMAGE ACCORDINGLY!
-
+    [SerializeField] public float wait;
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
@@ -28,9 +29,13 @@ public class EnemyMelee : MonoBehaviour
     
     public void OnCollisionEnter(Collision collision)
     {
-       if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            Attack(); // Wait one second before hitting player again.
+            Invoke("Attack", wait);
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -38,6 +43,6 @@ public class EnemyMelee : MonoBehaviour
     {
         // Damage player HERE!
         Health.player.TakeDamage(damage);
-        Debug.Log("Attacking!... Player has taken: " + damage + " and has: " + Health.player.CurrentHealth + " health left!");
+        Debug.Log("Attacking!... Player has taken: " + damage + " and has: " + Health.player.CurrentHealth + " health left!");   
     }
 }

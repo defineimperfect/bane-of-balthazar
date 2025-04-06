@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 // DESIGNATED SCRIPT FOR RANGED ENEMY!
-// NOTE: WORKS TO AN EXTENT, WILL WORK LATER TO MAKE IT NOT DEAL DAMAGE WITH 100% ACCURACY.
-
 public class EnemyShooter : MonoBehaviour
 {
 
@@ -14,77 +12,72 @@ public class EnemyShooter : MonoBehaviour
 
     private EnemyReferences enemyReferences;
 
+    private EnemyNavigation enemyNav;
+
+
+    [Header("Enemy Shooter")]
     public Transform shootingPoint; // Raycast start
 
  //   public GameObject particleEffect; // IF PROJECTILES ARE DESIRED.
 
     private Health playerHealth;
 
-    [SerializeField] public int damage;
+    public bool canShoot;
 
-    /*
-    public int ammo = 15;
+    [SerializeField] public float fireRate; // Determines how often the enemy shoots!
 
-    private int currentAmmo; 
-    */
+    [SerializeField]  public float timeToFire; // Determines when the enemy can shoot!
+
+    [SerializeField] public int damage; // Adjust damage accordingly!
+
+    
 
     private void Awake()
     {
         enemyReferences = GetComponent<EnemyReferences>();
+        enemyNav = GetComponent<EnemyNavigation>();
         playerHealth = GetComponent<Health>();
-      //  Reload();
+        canShoot = true;
     }
 
 
     private void Update()
     {
-        Shooting();
+        float distance = Vector3.Distance(transform.position, EnemyNavigation.enemyAI.player.transform.position);
+        if (distance <= EnemyNavigation.enemyAI.attackDistance)
+        {
+            canShoot = true;
+        }
+        else
+        {
+            canShoot = false;
+        }
+
+        if (canShoot)
+        {
+            if (timeToFire <= 0)
+            {
+                Shooting();
+                timeToFire = fireRate;
+            }
+            else
+            {
+               timeToFire -= Time.deltaTime;
+            }
+        }
     }
 
     public void Shooting()
     {
-        /* Reloading not necessary at the moment.
-         if(ShouldReload() == true)
-         {
-             Reload();
-         }
-         else
-         {
-             return;
-         }
-         */
-           
-        RaycastHit hit;
+            RaycastHit hit;
 
-        if(Physics.Raycast(shootingPoint.position, transform.TransformDirection(Vector3.forward), out hit, 10))
-        {
-            Debug.DrawRay(shootingPoint.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.magenta);
+            if (Physics.Raycast(shootingPoint.position, transform.TransformDirection(Vector3.forward), out hit, 10))
+            {
+                Debug.DrawRay(shootingPoint.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.magenta);
 
-            Health.player.TakeDamage(damage);
+                Health.player.TakeDamage(damage);
 
-            Debug.Log("Shooting!... Player has taken: " + damage + " and has: " + Health.player.CurrentHealth + " health left!");
-
-            Task.Delay(1000);
-        }
+                Debug.Log("Shooting!... Player has taken: " + damage + " and has: " + Health.player.CurrentHealth + " health left!");
+            }   
     }
 }
-
-    /* Reloading methods.
-    public bool ShouldReload()
-    {
-        if(currentAmmo <= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public void Reload()
-    {
-        Debug.Log("Reload");
-        currentAmmo = ammo;
-    }
-    */
