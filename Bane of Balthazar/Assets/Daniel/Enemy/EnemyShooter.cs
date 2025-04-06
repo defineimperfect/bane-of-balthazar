@@ -14,6 +14,7 @@ public class EnemyShooter : MonoBehaviour
 
     private EnemyNavigation enemyNav;
 
+    public static EnemyShooter shooter;
 
     [Header("Enemy Shooter")]
     public Transform shootingPoint; // Raycast start
@@ -38,6 +39,7 @@ public class EnemyShooter : MonoBehaviour
         enemyNav = GetComponent<EnemyNavigation>();
         playerHealth = GetComponent<Health>();
         canShoot = true;
+        shooter = this;
     }
 
 
