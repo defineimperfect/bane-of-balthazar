@@ -394,8 +394,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 757785522}
     - target: {fileID: 1622358335931007827, guid: 7ea03398956bcbf47a138d8985436e5f, type: 3}
+      propertyPath: shootForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622358335931007827, guid: 7ea03398956bcbf47a138d8985436e5f, type: 3}
       propertyPath: allowInvoke
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1622358335931007827, guid: 7ea03398956bcbf47a138d8985436e5f, type: 3}
       propertyPath: attackPoint
@@ -15427,7 +15431,7 @@ GameObject:
   - component: {fileID: 1337972306}
   - component: {fileID: 1337972305}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Rektangel_golv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
