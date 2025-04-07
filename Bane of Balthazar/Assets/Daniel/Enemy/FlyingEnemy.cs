@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 
-//TEST
+//TEST, MAY NOT BE USED.
 public class FlyingEnemy : MonoBehaviour
 {
     
